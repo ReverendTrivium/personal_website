@@ -5,7 +5,7 @@ import tailwindcss from 'tailwindcss'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "https://derrickeberlein.dev/",
+  base: "https://reverendtrivium.github.io/personal_website",
   // base:"/personal_website",
   build: {
     outDir: 'dist'
