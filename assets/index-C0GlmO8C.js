@@ -164,7 +164,7 @@ export default theme;`}function yc(e={},...t){const{breakpoints:n,mixins:r={},sp
   .radio-container .glider-container .glider {
     position: relative;
     height: calc(100% / var(--total-radio));
-    width: 100%;
+    width: 50%;
     background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0) 0%,
