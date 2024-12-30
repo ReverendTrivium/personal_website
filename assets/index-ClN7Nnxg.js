@@ -136,7 +136,7 @@ export default theme;`}function yc(e={},...t){const{breakpoints:n,mixins:r={},sp
   .radio-container {
     --main-color: #008080;
     --main-color-opacity: #f7e4791c;
-    --total-radio: 4;
+    --total-radio: 6;
     display: flex;
     flex-direction: column;
     position: relative;
