@@ -187,7 +187,7 @@ export default theme;`}function yc(e={},...t){const{breakpoints:n,mixins:r={},sp
     content: "";
     position: absolute;
     right: 0;
-    height: 100%;
+    height: 60%;
     width: 150px;
     background: linear-gradient(
       90deg,
