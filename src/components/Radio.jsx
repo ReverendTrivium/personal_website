@@ -33,7 +33,18 @@ const Radio = ({ nav }) => {
             document.getElementById('Education')?.scrollIntoView({behavior: 'smooth'});
         }} id="radio-education" name="radio" type="radio" className={nav == 'Education' ? 'active' : ''}/>
         <label htmlFor="radio-education">EDUCATION</label>
+
+        <input onClick = {() => {
+            document.getElementById('Certifications')?.scrollIntoView({behavior: 'smooth'});
+        }} id="radio-certifications" name="radio" type="radio" className={nav == 'Certifications' ? 'active' : ''}/>
+        <label htmlFor="radio-certifications">CERTIFICATIONS</label>
+
+        <input onClick = {() => {
+            document.getElementById('Achievements')?.scrollIntoView({behavior: 'smooth'});
+        }} id="radio-achievements" name="radio" type="radio" className={nav == 'Achievements' ? 'active' : ''}/>
+        <label htmlFor="radio-achievements">ACHIEVEMENTS</label>
         
+
         <div className="glider-container">
           <div className="glider" />
         </div>

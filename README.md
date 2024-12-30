@@ -3,8 +3,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  </a>
-
 <h3 align="center">Derrick Eberlein's Personal Website</h3>
 
 </div>
