@@ -139,9 +139,13 @@ export default theme;`}function yc(e={},...t){const{breakpoints:n,mixins:r={},sp
     --total-radio: 6;
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: fixed;
     padding-right: 0.5rem;
     align-items: flex-end;
+    left: 20px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
   }
   .radio-container input {
     cursor: pointer;
