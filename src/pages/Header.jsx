@@ -16,10 +16,10 @@ const Header = () => {
             <div className="header-content">
                 <h1>Derrick Eberlein</h1>
                 <h2>Software Engineer</h2>
-                <h3 className="mt-4 brush-script">
+                <h3 className="brush-script">
                     Turning intrusive thoughts into reality.
                 </h3>
-                <div className="mt-4">
+                <div className="mt-4 center">
                     <Tooltip title="GitHub">
                         <Link
                             href="https://github.com/reverendtrivium/"

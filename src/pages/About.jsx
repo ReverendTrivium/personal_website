@@ -4,7 +4,7 @@ import '../Styles/About.css';
 
 const About =  ({ sectionRefs }) => {
   return (
-    <div ref={(el) => (sectionRefs.current["About"] = el)} id="About" className="text-overlay md:min-h-screen flex flex-col justify-center items-start text-gray-100 px-4 py-4">
+    <div ref={(el) => (sectionRefs.current["About"] = el)} id="About" className="text-overlay flex flex-col justify-center items-start text-gray-100 px-4 py-4">
       <h2 className="text-overlay text-xl font-medium uppercase border-box">About</h2>
       <h3 className="text-overlay text-base mt-4 text-start text-lightgray">
         I am a passionate software engineer specializing in crafting dynamic Java applications 
