@@ -138,7 +138,7 @@ export default theme;`}function yc(e={},...t){const{breakpoints:n,mixins:r={},sp
     --total-radio: 6;
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: sticky;
     padding-right: 0.5rem;
     align-items: flex-start;
     width: auto;
