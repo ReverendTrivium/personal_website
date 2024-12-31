@@ -1,3 +1,4 @@
+/* App.css */
 #root {
   margin: 0 auto;
   /* padding: 0rem;
@@ -13,21 +14,47 @@
   background-size: 60px 60px;
   background-position: -5px -5px; */
 }
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  scroll-behavior: smooth;
-  background-color: #0b1228;
-}
 
-main {
+/* Ensure the Header spans the top */
+.header-container {
+  width: 100%;
+  height: auto; /* Dynamically adjust height to content */
   display: flex;
   flex-direction: column;
-  width: 100%; /* Ensure the main container spans the full width */
-  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 20;
+  overflow: hidden; /* Prevent any content overflow */
+  padding: 1rem 0; /* Adjust padding */
+}
+
+/* Sections container starts immediately below Header */
+.sections-container {
+  position: relative;
+  z-index: 10;
+  margin: 0; /* Remove unnecessary margin */
+  padding: 2rem 1rem; /* Keep padding minimal */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  flex: 1; /* Ensure it takes the remaining space */
+}
+
+/* Individual sections */
+.radio-section {
+  flex-shrink: 0; /* Prevents shrinking */
+  width: auto; /* Takes only as much space as its content needs */
+  padding: 0.5rem; /* Optional for inner padding */
+  box-sizing: border-box; /* Ensures consistent sizing */
+}
+
+/* Main content container */
+.content {
+  display: flex;
+  flex-direction: row; /* Ensure side-by-side layout */
+  align-items: flex-start; /* Align items to the top */
+  gap: 0.5rem; /* Maintain spacing between columns */
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding and borders don't add to width */
 }
 
 @media (min-width: 768px) {
@@ -36,35 +63,56 @@ main {
   }
 }
 
-.container {
-  flex: 1;
-  /* position: fixed; */
-  margin: 0;
+.text-lightgray {
+  color: lightgray;
+}
+
+.border-box {
+  border: 2px solid white; /* Adjust the border color and width as needed */
+  padding: 10px; /* Add padding inside the border */
+  border-radius: 5px; /* Optional: round the corners */
+}
+
+.brush-script {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.italic-script {
+  font-style: italic;
+  font-size: .75rem;
+}
+
+/* Star Sections */
+.star-container {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  background-color: #0b1228;
-  inset: 0;
-  pointer-events:all;
-  overflow: hidden;
+  pointer-events: none; /* Prevent stars from blocking interactions */
 }
 
 .star {
-  position: fixed;
-  z-index: -.5;
-  width: 4px;
-  height: 4px;
-  background-color: #00b8e6;
+  position: absolute;
+  background-color: white;
   border-radius: 50%;
-  opacity: 0;
-  /* transition: filter 0.3s ease, opacity 0.3s ease; */
-  animation: shoot 3s ease-in-out forwards, fadeIn 3s ease-in-out forwards;
+  animation: moveStar 5s linear infinite;
 }
 
 .star.blur {
-  filter: blur(0.5rem) brightness(90%); /* Apply blur and darken effect */
+  filter: blur(4px);
 }
 
+@keyframes moveStar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
 @keyframes shoot {
   0% {
     transform: translate(0, 0);

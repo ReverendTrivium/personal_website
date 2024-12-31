@@ -14,36 +14,78 @@ const Radio = ({ nav }) => {
   return (
     <StyledWrapper nav={nav}>
       <div className="radio-container">
-        <input onClick = {() => {
-            document.getElementById('About')?.scrollIntoView({behavior: 'smooth'});
-        }} defaultChecked id="radio-about" name="radio" type="radio" />
-        <label htmlFor="radio-about" className={nav == 'About' ? 'active' : ''}>ABOUT</label>
-        
-        <input onClick = {() => {
-            document.getElementById('Experience')?.scrollIntoView({behavior: 'smooth'});
-        }} id="radio-experience" name="radio" type="radio" />
-        <label htmlFor="radio-experience" className={nav == 'Experience' ? 'active' : ''}>EXPERIENCE</label>
-        
-        <input onClick = {() => {
-            document.getElementById('Projects')?.scrollIntoView({behavior: 'smooth'});
-        }} id="radio-projects" name="radio" type="radio" className={nav == 'Projects' ? 'active' : ''}/>
-        <label htmlFor="radio-projects">PROJECTS</label>
-        
-        <input onClick = {() => {
-            document.getElementById('Education')?.scrollIntoView({behavior: 'smooth'});
-        }} id="radio-education" name="radio" type="radio" className={nav == 'Education' ? 'active' : ''}/>
-        <label htmlFor="radio-education">EDUCATION</label>
+        <input
+          onClick={() => {
+            document.getElementById('About')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          defaultChecked
+          id="radio-about"
+          name="radio"
+          type="radio"
+        />
+        <label htmlFor="radio-about" className={nav === 'About' ? 'active' : ''}>
+          ABOUT
+        </label>
 
-        <input onClick = {() => {
-            document.getElementById('Certifications')?.scrollIntoView({behavior: 'smooth'});
-        }} id="radio-certifications" name="radio" type="radio" className={nav == 'Certifications' ? 'active' : ''}/>
-        <label htmlFor="radio-certifications">CERTIFICATIONS</label>
+        <input
+          onClick={() => {
+            document.getElementById('Experience')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          id="radio-experience"
+          name="radio"
+          type="radio"
+        />
+        <label htmlFor="radio-experience" className={nav === 'Experience' ? 'active' : ''}>
+          EXPERIENCE
+        </label>
 
-        <input onClick = {() => {
-            document.getElementById('Achievements')?.scrollIntoView({behavior: 'smooth'});
-        }} id="radio-achievements" name="radio" type="radio" className={nav == 'Achievements' ? 'active' : ''}/>
-        <label htmlFor="radio-achievements">ACHIEVEMENTS</label>
-        
+        <input
+          onClick={() => {
+            document.getElementById('Projects')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          id="radio-projects"
+          name="radio"
+          type="radio"
+        />
+        <label htmlFor="radio-projects" className={nav === 'Projects' ? 'active' : ''}>
+          PROJECTS
+        </label>
+
+        <input
+          onClick={() => {
+            document.getElementById('Education')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          id="radio-education"
+          name="radio"
+          type="radio"
+        />
+        <label htmlFor="radio-education" className={nav === 'Education' ? 'active' : ''}>
+          EDUCATION
+        </label>
+
+        <input
+          onClick={() => {
+            document.getElementById('Certifications')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          id="radio-certifications"
+          name="radio"
+          type="radio"
+        />
+        <label htmlFor="radio-certifications" className={nav === 'Certifications' ? 'active' : ''}>
+          CERTIFICATIONS
+        </label>
+
+        <input
+          onClick={() => {
+            document.getElementById('Achievements')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          id="radio-achievements"
+          name="radio"
+          type="radio"
+        />
+        <label htmlFor="radio-achievements" className={nav === 'Achievements' ? 'active' : ''}>
+          ACHIEVEMENTS
+        </label>
 
         <div className="glider-container">
           <div className="glider" />
@@ -51,25 +93,30 @@ const Radio = ({ nav }) => {
       </div>
     </StyledWrapper>
   );
-}
+};
 
 const StyledWrapper = styled.div`
-
   .radio-container {
     --main-color: #008080;
     --main-color-opacity: #f7e4791c;
-    --total-radio: 4;
+    --total-radio: 6;
     display: flex;
     flex-direction: column;
     position: relative;
     padding-right: 0.5rem;
-    align-items: flex-end;
+    align-items: flex-start;
+    width: auto;
+    margin-left: 20px;
+    margin-top: calc(1rem + 50px);
+    z-index: 30;
   }
+
   .radio-container input {
     cursor: pointer;
     appearance: none;
-    display:none;
+    display: none;
   }
+
   .radio-container .glider-container {
     position: absolute;
     right: 0;
@@ -83,6 +130,7 @@ const StyledWrapper = styled.div`
     );
     width: 1px;
   }
+
   .radio-container .glider-container .glider {
     position: relative;
     height: calc(100% / var(--total-radio));
@@ -95,28 +143,7 @@ const StyledWrapper = styled.div`
     );
     transition: transform 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56);
   }
-  .radio-container .glider-container .glider::before {
-    content: "";
-    position: absolute;
-    height: 60%;
-    width: 300%;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--main-color);
-    filter: blur(10px);
-  }
-  .radio-container .glider-container .glider::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    height: 100%;
-    width: 150px;
-    background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0) 0%,
-      var(--main-color-opacity) 100%
-    );
-  }
+
   .radio-container label {
     cursor: pointer;
     padding: 1rem;
@@ -132,6 +159,7 @@ const StyledWrapper = styled.div`
   .radio-container label.active + label:hover {
     color: white;
   }
+
   .radio-container label:not(.active) + label:hover {
     color: grey;
   }
@@ -174,6 +202,7 @@ const StyledWrapper = styled.div`
 
   .radio-container input:nth-of-type(10):checked ~ .glider-container .glider {
     transform: translateY(900%);
-  }`;
+  }
+`;
 
 export default Radio;
