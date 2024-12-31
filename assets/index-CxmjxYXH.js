@@ -143,7 +143,7 @@ export default theme;`}function yc(e={},...t){const{breakpoints:n,mixins:r={},sp
     padding-right: 0.5rem;
     align-items: flex-end;
     left: 20px; /* Adjust as needed */
-    top: 50%;
+    top: calc(1rem + 50px); /* Position below the Header */
     transform: translateY(-50%);
     z-index: 100;
   }
