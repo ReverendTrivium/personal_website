@@ -1,60 +1,63 @@
 /* App.css */
-#root {
-  margin: 0 auto;
-  /* padding: 0rem;
-  text-align: center;
-  width: 100%;
+
+/* Ensure the root allows scrolling */
+html, body {
+  margin: 0;
+  padding: 0;
   height: 100%;
-  background-color: #172554;
-  background-image: linear-gradient(
-    32deg,
-    rgba(8, 8, 8, 0.74) 30px,
-    transparent
-  );
-  background-size: 60px 60px;
-  background-position: -5px -5px; */
+  overflow: auto;
+}
+
+/* Main container styles */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* Content container */
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  height: calc(100vh - 100px); /* Subtract header height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  box-sizing: border-box;
+  gap: 0.5rem;
+}
+
+/* Sticky radio container */
+.radio-container-wrapper {
+  position: sticky;
+  top: 0; /* Stick to the top of the viewport */
+  height: 100vh; /* Full viewport height */
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Sections container */
+.sections-container {
+  flex-grow: 1;
+  overflow: visible; /* Allow sticky elements to remain in view */
+  padding: 2rem 1rem;
+  box-sizing: border-box;
 }
 
 /* Ensure the Header spans the top */
 .header-container {
   width: 100%;
-  height: auto; /* Dynamically adjust height to content */
+  position: sticky; /* Make header sticky */
+  top: 0;
+  z-index: 50; /* Ensure it stays above other elements */
+  background-color: #000000; /* Add background color if needed */
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
-  z-index: 20;
-  overflow: hidden; /* Prevent any content overflow */
-  padding-top: 1rem 0; /* Adjust padding */
-}
-
-/* Sections container starts immediately below Header */
-.sections-container {
-  position: relative;
-  z-index: 10;
-  margin: 0; /* Remove unnecessary margin */
-  padding: 2rem 1rem; /* Keep padding minimal */
-  box-sizing: border-box; /* Ensure padding is included in the width */
-  flex: 1; /* Ensure it takes the remaining space */
-}
-
-/* Individual sections */
-.radio-section {
-  flex-shrink: 0; /* Prevents shrinking */
-  width: auto; /* Takes only as much space as its content needs */
-  padding: 0.5rem; /* Optional for inner padding */
-  box-sizing: border-box; /* Ensures consistent sizing */
-}
-
-/* Main content container */
-.content {
-  display: flex;
-  flex-direction: row; /* Ensure side-by-side layout */
-  align-items: flex-start; /* Align items to the top */
-  gap: 0.5rem; /* Maintain spacing between columns */
-  width: 100%;
-  box-sizing: border-box; /* Ensure padding and borders don't add to width */
+  padding-top: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -86,12 +89,13 @@
 
 /* Star Sections */
 .star-container {
-  position: absolute;
+  position: fixed; /* Stays fixed in the background */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Prevent stars from blocking interactions */
+  z-index: 0; /* Lower z-index to keep behind other elements */
+  pointer-events: none; /* Prevent blocking interactions */
 }
 
 .star {

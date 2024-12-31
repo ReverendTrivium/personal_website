@@ -119,13 +119,13 @@ const App = () => {
       </div>
 
       {/* Star container for stars only */}
-      <div className="star-container absolute top-0 left-0 w-full h-full z-0"></div>
+      <div className="star-container"></div>
       
       {/* Main content container */}
       <div className="content">
       
         {/* Radio menu */}
-        <div className="radio-section">
+        <div className="radio-container-wrapper">
           <Radio nav={nav} />
         </div>
 

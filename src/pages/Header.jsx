@@ -19,7 +19,7 @@ const Header = () => {
                 <h3 className="brush-script">
                     Turning intrusive thoughts into reality.
                 </h3>
-                <div className="mt-4 center">
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Tooltip title="GitHub">
                         <Link
                             href="https://github.com/reverendtrivium/"

@@ -25,7 +25,6 @@
     align-items: center;
     color: white;
     z-index: 20;
-    overflow: hidden; /* Prevent any content overflow */
     padding-top: 1rem 0; /* Adjust padding */
   }
 
@@ -55,11 +54,6 @@
     }
 }
 
-.center {
-    justify-content: center;
-    align-items: center;
-}
-
 .text-lightgray {
     color: lightgray;
 }
@@ -69,5 +63,5 @@
     font-size: 1.5rem;
     color: white;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.25rem;
 }
