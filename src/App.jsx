@@ -78,7 +78,7 @@ const App = () => {
         <div className={`header-container ${isHeaderVisible ? 'visible' : 'hidden'}`}>
           <Header />
         </div>
-  
+        
         {/* Background Layers */}
         <div className="star-background"></div>
         {/* Meteor containers */}

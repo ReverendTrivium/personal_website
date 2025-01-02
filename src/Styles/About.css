@@ -27,7 +27,6 @@ main {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 2rem;
     color: white;
 }
   
@@ -42,12 +41,22 @@ main {
     line-height: 1.6;
 }
   
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+  
 .tag-cloud {
     width: 50%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+  
 
 .container {
     flex: 1;

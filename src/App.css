@@ -38,7 +38,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 1rem;
+  padding-right: .5rem;
 }
 
 
@@ -46,7 +46,7 @@ html, body {
 .sections-container {
   flex-grow: 1;
   overflow: visible; /* Allow sections to flow within the page */
-  padding: 2rem 1rem;
+  padding-left: .5rem;
 }
 
 /* Ensure the Header spans the top */
@@ -59,7 +59,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
+  padding-top: 1rem 0;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -92,4 +92,12 @@ html, body {
     50px 50px #fff, 100px 150px #fff, 200px 100px #fff, 
     300px 200px #fff, 400px 300px #fff, 500px 400px #fff, 
     600px 500px #fff, 700px 600px #fff, 800px 700px #fff;
+}
+
+/* Meteor Sections */
+.meteor-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
