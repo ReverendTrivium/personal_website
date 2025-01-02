@@ -25,6 +25,15 @@ const TagCloud = () => {
     renderer.setSize(width, height);
     mountRef.current.appendChild(renderer.domElement);
 
+    // Point Light
+    const pointLight = new THREE.PointLight(0xffffff, 2, 1000); // Increase intensity to 2
+    pointLight.position.set(50, 50, 50);
+    scene.add(pointLight);
+
+    // Ambient Light
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Increase intensity to 0.5
+    scene.add(ambientLight);
+
     // Tags for the Cloud
     const tags = [
       'JavaScript', 'TypeScript', 'React.js', 'Next.js', 'Node.js', 'HTML5',
@@ -49,10 +58,22 @@ const TagCloud = () => {
         const textGeometry = new TextGeometry(tag, {
           font: font,
           size: 12,
-          height: 2,
+          height: 2, // Add 3D depth
+          bevelEnabled: true,
+          bevelThickness: 1,
+          bevelSize: 0.5,
+          bevelSegments: 2,
         });
 
-        const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const textMaterial = new THREE.MeshStandardMaterial({
+          color: 0xffffff, // Ensure text color is white
+          emissive: 0xffffff, // Add emissive white light for better visibility
+          emissiveIntensity: 0.5, // Adjust the intensity of emissive light
+          metalness: 0.5,  // Add a slight metallic look
+          roughness: 0.3,  // Add slight roughness
+        });
+        
+
         const textMesh = new THREE.Mesh(textGeometry, textMaterial);
 
         // Position the text
@@ -87,10 +108,9 @@ const TagCloud = () => {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Apply persistent rotation state
       if (isMouseOver.current) {
-        rotationState.current.x += mousePosition.current.y * 0.01; // Apply slight rotation based on mouse Y
-        rotationState.current.y += mousePosition.current.x * 0.01; // Apply slight rotation based on mouse X
+        rotationState.current.x += mousePosition.current.y * 0.005; // Apply slight rotation based on mouse Y
+        rotationState.current.y += mousePosition.current.x * 0.005; // Apply slight rotation based on mouse X
       }
 
       scene.rotation.x = rotationState.current.x;
