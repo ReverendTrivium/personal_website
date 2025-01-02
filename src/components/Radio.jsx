@@ -41,18 +41,6 @@ const Radio = ({ nav }) => {
 
         <input
           onClick={() => {
-            document.getElementById('Projects')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          id="radio-projects"
-          name="radio"
-          type="radio"
-        />
-        <label htmlFor="radio-projects" className={nav === 'Projects' ? 'active' : ''}>
-          PROJECTS
-        </label>
-
-        <input
-          onClick={() => {
             document.getElementById('Education')?.scrollIntoView({ behavior: 'smooth' });
           }}
           id="radio-education"
@@ -61,6 +49,18 @@ const Radio = ({ nav }) => {
         />
         <label htmlFor="radio-education" className={nav === 'Education' ? 'active' : ''}>
           EDUCATION
+        </label>
+
+        <input
+          onClick={() => {
+            document.getElementById('Projects')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          id="radio-projects"
+          name="radio"
+          type="radio"
+        />
+        <label htmlFor="radio-projects" className={nav === 'Projects' ? 'active' : ''}>
+          PROJECTS
         </label>
 
         <input

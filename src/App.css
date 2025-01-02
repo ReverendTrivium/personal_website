@@ -1,11 +1,14 @@
-/* App.css */
-
-/* Ensure the root allows scrolling */
+/* Ensure the root allows proper layout */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: auto;
+  overflow: auto; /* Allow scrolling for the entire page */
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 /* Main container styles */
@@ -13,6 +16,8 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  z-index: 0;
+  background-image: radial-gradient(ellipse at top , #080e21 0%,  #1b2735 95%);
 }
 
 /* Content container */
@@ -20,122 +25,71 @@ html, body {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  height: calc(100vh - 100px); /* Subtract header height */
-  overflow-y: auto; /* Enable vertical scrolling */
-  box-sizing: border-box;
   gap: 0.5rem;
+  z-index: 5;
 }
 
 /* Sticky radio container */
 .radio-container-wrapper {
-  position: sticky;
+  position: sticky; /* Keep it in place while scrolling */
   top: 0; /* Stick to the top of the viewport */
-  height: 100vh; /* Full viewport height */
-  z-index: 30;
+  height: 100vh; /* Full viewport height to cover the screen */
+  z-index: 30; /* Ensure it stays above other elements */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 1rem;
 }
+
 
 /* Sections container */
 .sections-container {
   flex-grow: 1;
-  overflow: visible; /* Allow sticky elements to remain in view */
+  overflow: visible; /* Allow sections to flow within the page */
   padding: 2rem 1rem;
-  box-sizing: border-box;
 }
 
 /* Ensure the Header spans the top */
 .header-container {
   width: 100%;
-  position: sticky; /* Make header sticky */
+  position: relative;
   top: 0;
-  z-index: 50; /* Ensure it stays above other elements */
-  background-color: #000000; /* Add background color if needed */
+  z-index: 10;
   color: white;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 1rem;
+  padding: 1rem 0;
+  transition: transform 0.3s ease-in-out;
 }
 
-@media (min-width: 768px) {
-  main {
-    flex-direction: row;
-  }
+.header-container.hidden {
+  transform: translateY(-100%); /* Slide the header out of view */
+  opacity: 0; /* Optional: fade the header out */
 }
 
-.text-lightgray {
-  color: lightgray;
-}
-
-.border-box {
-  border: 2px solid white; /* Adjust the border color and width as needed */
-  padding: 10px; /* Add padding inside the border */
-  border-radius: 5px; /* Optional: round the corners */
-}
-
-.brush-script {
-  font-family: 'Brush Script MT', cursive;
-  font-size: 1.5rem;
-  color: white;
-}
-
-.italic-script {
-  font-style: italic;
-  font-size: .75rem;
+.header-container.visible {
+  transform: translateY(0); /* Bring the header back into view */
+  opacity: 1; /* Optional: fade the header in */
 }
 
 /* Star Sections */
-.star-container {
-  position: fixed; /* Stays fixed in the background */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0; /* Lower z-index to keep behind other elements */
-  pointer-events: none; /* Prevent blocking interactions */
-}
-
 .star {
   position: absolute;
   background-color: white;
   border-radius: 50%;
-  animation: moveStar 5s linear infinite;
 }
 
-.star.blur {
-  filter: blur(4px);
-}
-
-@keyframes moveStar {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(100vh);
-  }
-}
-@keyframes shoot {
-  0% {
-    transform: translate(0, 0);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(100px, 100px); /* Adjust for diagonal shooting */
-    opacity: 0;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1; /* Star fully visible at halfway through */
-  }
-  100% {
-    opacity: 0; /* Fade out at the end */
-  }
+.star-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background: transparent;
+  box-shadow: 
+    50px 50px #fff, 100px 150px #fff, 200px 100px #fff, 
+    300px 200px #fff, 400px 300px #fff, 500px 400px #fff, 
+    600px 500px #fff, 700px 600px #fff, 800px 700px #fff;
 }

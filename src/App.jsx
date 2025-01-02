@@ -7,140 +7,116 @@ import Education from './pages/Education';
 import Experience from './pages/Experience';
 import Projects from './pages/Projects';
 import Radio from './components/Radio';
+import './styles/Meteors.scss';
 
 import React, { useState, useEffect, useRef } from 'react';
 
 const App = () => {
-  function createStar() {
-    const container = document.querySelector('.star-container'); // Change target to a dedicated star container
-    if (!container) return; // Ensure container exists
-
-    // Create a star element
-    const star = document.createElement('div');
-    star.className = 'star';
-
-    // Set random position within the viewport
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    let startX = Math.random() * viewportWidth - 100;
-    let startY = Math.random() * viewportHeight - 100;
-
-    const starSize = Math.random() * 16 + 0.01;
-    star.style.width = `${starSize}px`;
-    star.style.height = `${starSize}px`;
-
-    // Ensure the star stays within the viewport boundaries
-    startX = Math.min(startX, viewportWidth - starSize);
-    startY = Math.min(startY, viewportHeight - starSize);
-
-    star.style.left = `${startX}px`;
-    star.style.top = `${startY}px`;
-
-    // Append the star to the container
-    container.appendChild(star);
-
-    // Remove the star after the animation ends
-    star.addEventListener('animationend', () => {
-      star.remove();
-    });
-
-    // Initial position check
-    checkStarPosition(star, container);
-  }
-
-  function checkStarPosition(star, container) {
-    const starRect = star.getBoundingClientRect();
-    const viewportWidth = window.innerWidth;
-
-    if (starRect.right < 0 || starRect.left > viewportWidth) {
-      star.remove();
-    }
-
-    // Check overlap with section areas
-    const sectionArray = Object.values(sectionRefs.current);
-
-    sectionArray.forEach((sect) => {
-      if (sect) {
-        const textRect = sect.getBoundingClientRect();
-        if (
-          starRect.left < textRect.right &&
-          starRect.right > textRect.left &&
-          starRect.top < textRect.bottom &&
-          starRect.bottom > textRect.top
-        ) {
-          star.classList.add('blur'); // Add blur effect
-        }
-      }
-    });
-  }
-
-  // Create stars immediately on page load
-  useEffect(() => {
-    for (let i = 0; i < 25; i++) {
-      createStar();
-    }
-  }, []);
-
-  // Launch a star at random intervals
-  useEffect(() => {
-    const interval = setInterval(() => {
-      createStar();
-    }, Math.random() * 1000 + 500); // Random interval
-
-    return () => clearInterval(interval);
-  }, []);
-
   const [nav, setNav] = useState('About');
   const sectionRefs = useRef({});
+  const [isHeaderVisible, setHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
+  // Dynamic Star Background.
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setNav(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.6 }
-    );
-
-    Object.values(sectionRefs.current).forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
+    const starBackground = document.querySelector('.star-background');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = `${Math.random() * window.innerHeight}px`;
+      star.style.left = `${Math.random() * window.innerWidth}px`;
+      star.style.width = `${Math.random() * 2 + 1}px`;
+      star.style.height = `${Math.random() * 2 + 1}px`;
+      starBackground.appendChild(star);
+    }
   }, []);
+  
 
-  return (
-    <body className="w-full h-full bg-[#000000]">
-      <div className="header-container">
-        <Header />
-      </div>
+    // Handle scroll for header visibility
+    useEffect(() => {
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+  
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+          setHeaderVisible(false); // Hide header when scrolling down
+        } else {
+          setHeaderVisible(true); // Show header when scrolling up
+        }
+  
+        setLastScrollY(currentScrollY);
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, [lastScrollY]);
+  
+    // Keep IntersectionObserver for stars or other elements
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setNav(entry.target.id);
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+  
+      Object.values(sectionRefs.current).forEach((ref) => {
+        if (ref) observer.observe(ref);
+      });
+  
+      return () => observer.disconnect();
+    }, []);
 
-      {/* Star container for stars only */}
-      <div className="star-container"></div>
-      
-      {/* Main content container */}
-      <div className="content">
-      
-        {/* Radio menu */}
-        <div className="radio-container-wrapper">
-          <Radio nav={nav} />
+    return (
+      <div className="w-full h-full">
+        <div className={`header-container ${isHeaderVisible ? 'visible' : 'hidden'}`}>
+          <Header />
         </div>
-
-        {/* Sections container */}
-        <div className="sections-container">
-          <About sectionRefs={sectionRefs} />
-          <Experience sectionRefs={sectionRefs} />
-          <Education sectionRefs={sectionRefs} />
-          <Projects sectionRefs={sectionRefs} />
-          <Certifications sectionRefs={sectionRefs} />
-          <Achievements sectionRefs={sectionRefs} />
+  
+        {/* Background Layers */}
+        <div className="star-background"></div>
+        {/* Meteor containers */}
+        <div className="meteor-container">
+          <div className="meteor-1"></div>
+          <div className="meteor-2"></div>
+          <div className="meteor-3"></div>
+          <div className="meteor-4"></div>
+          <div className="meteor-5"></div>
+          <div className="meteor-6"></div>
+          <div className="meteor-7"></div>
+          <div className="meteor-8"></div>
+          <div className="meteor-9"></div>
+          <div className="meteor-10"></div>
+          <div className="meteor-11"></div>
+          <div className="meteor-12"></div>
+          <div className="meteor-13"></div>
+          <div className="meteor-14"></div>
+          <div className="meteor-15"></div>
+        </div>
+  
+        {/* Main content container */}
+        <div className="content">
+          <div className="radio-container-wrapper">
+            <Radio nav={nav} />
+          </div>
+  
+          <div className="sections-container">
+            <About sectionRefs={sectionRefs} />
+            <Experience sectionRefs={sectionRefs} />
+            <Education sectionRefs={sectionRefs} />
+            <Projects sectionRefs={sectionRefs} />
+            <Certifications sectionRefs={sectionRefs} />
+            <Achievements sectionRefs={sectionRefs} />
+          </div>
         </div>
       </div>
-    </body>
-  );
+    );
 };
 
 export default App;
