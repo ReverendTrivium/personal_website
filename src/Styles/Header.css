@@ -13,7 +13,7 @@
     align-items: center;
     color: white;
     z-index: 20;
-    padding-top: 1rem 0; /* Adjust padding */
+    padding-top: .5rem; /* Adjust padding */
   }
 
 .header-container h1 {

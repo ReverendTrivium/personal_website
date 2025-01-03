@@ -147,7 +147,7 @@ const TagCloud = () => {
     return null; // Do not render tag cloud on mobile
   }
 
-  return <div ref={mountRef} style={{ width: '50%', height: '500px', alignItems: Center}} />;
+  return <div ref={mountRef} style={{ width: '30%', height: '500px', alignItems: Center}} />;
 };
 
 export default TagCloud;

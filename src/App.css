@@ -6,7 +6,6 @@ html, body {
   overflow: auto; /* Allow scrolling for the entire page */
   box-sizing: border-box;
   scroll-behavior: smooth;
-  overflow-x: hidden;
   overscroll-behavior: contain;
 }
 
@@ -51,7 +50,7 @@ html, body {
 /* Sections container */
 .sections-container {
   flex-grow: 1;
-  overflow: visible; /* Allow sections to flow within the page */
+  overflow: hidden; /* Allow sections to flow within the page */
   padding-left: .5rem;
   scroll-behavior: smooth;
 }
@@ -80,39 +79,6 @@ html, body {
   transform: translateY(0); /* Bring the header back into view */
   opacity: 1; /* Optional: fade the header in */
 }
-
-/* Star Sections */
-.star {
-  position: absolute;
-  background-color: white;
-  border-radius: 50%;
-}
-
-.star-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  background: transparent;
-  scroll-behavior: smooth;
-  box-shadow: 
-    50px 50px #fff, 100px 150px #fff, 200px 100px #fff, 
-    300px 200px #fff, 400px 300px #fff, 500px 400px #fff, 
-    600px 500px #fff, 700px 600px #fff, 800px 700px #fff;
-}
-
-/* Meteor Sections */
-.meteor-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  scroll-behavior: smooth;
-}
-
-
 
 /* Mobile styles */
 @media screen and (max-width: 768px) {

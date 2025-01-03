@@ -9,6 +9,7 @@ import Projects from './pages/Projects';
 import Radio from './components/Radio';
 import './styles/Meteors.scss';
 import Meteors from './components/Meteors';
+import StarBackground from './components/StarBackground';
 import React, { useState, useEffect, useRef } from 'react';
 
 const App = () => {
@@ -16,20 +17,6 @@ const App = () => {
   const sectionRefs = useRef({});
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
-  // Dynamic Star Background.
-  useEffect(() => {
-    const starBackground = document.querySelector('.star-background');
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.style.top = `${Math.random() * window.innerHeight}px`;
-      star.style.left = `${Math.random() * window.innerWidth}px`;
-      star.style.width = `${Math.random() * 2 + 1}px`;
-      star.style.height = `${Math.random() * 2 + 1}px`;
-      starBackground.appendChild(star);
-    }
-  }, []);
   
     // Handle scroll for header visibility
     useEffect(() => {
@@ -79,8 +66,8 @@ const App = () => {
         </div>
         
         {/* Background Layers */}
-        <div className="star-background"></div>
-        <Meteors />
+        <StarBackground />
+        
 
         {/* Main content container */}
         <div className="content">

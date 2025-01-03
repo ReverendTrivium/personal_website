@@ -67,7 +67,6 @@ main {
     z-index: -1;
     inset: 0;
     pointer-events:all;
-    overflow: hidden;
 }
 
 .text-lightgray {
@@ -78,6 +77,7 @@ main {
     border: 2px solid white; /* Adjust the border color and width as needed */
     padding: 10px; /* Add padding inside the border */
     border-radius: 5px; /* Optional: round the corners */
+    overflow-x: hidden;
 }
 
 .brush-script {
