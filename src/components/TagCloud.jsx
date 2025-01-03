@@ -1,15 +1,33 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
+import { Center } from '@react-three/drei';
 
 const TagCloud = () => {
   const mountRef = useRef(null);
   const rotationState = useRef({ x: 0, y: 0 }); // Store the persistent rotation state
   const isMouseOver = useRef(false); // Track mouse hover state
   const mousePosition = useRef({ x: 0, y: 0 }); // Store mouse position
+  const [isMobile, setIsMobile] = useState(false); // Track if the screen is mobile
 
   useEffect(() => {
+    // Check if the screen size is mobile
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isMobile || !mountRef.current) return; // Do not render tag cloud on mobile
+
     const width = mountRef.current.clientWidth;
     const height = mountRef.current.clientHeight;
 
@@ -26,12 +44,12 @@ const TagCloud = () => {
     mountRef.current.appendChild(renderer.domElement);
 
     // Point Light
-    const pointLight = new THREE.PointLight(0xffffff, 2, 1000); // Increase intensity to 2
+    const pointLight = new THREE.PointLight(0xffffff, 2, 1000);
     pointLight.position.set(50, 50, 50);
     scene.add(pointLight);
 
     // Ambient Light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Increase intensity to 0.5
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
     // Tags for the Cloud
@@ -43,7 +61,7 @@ const TagCloud = () => {
     ];
 
     // Create Sphere and Add Text Tags
-    const radius = 200;
+    const radius = 100;
 
     const fontLoader = new FontLoader();
     fontLoader.load('/helvetiker_regular.typeface.json', (font) => {
@@ -58,7 +76,7 @@ const TagCloud = () => {
         const textGeometry = new TextGeometry(tag, {
           font: font,
           size: 12,
-          height: 2, // Add 3D depth
+          height: 2,
           bevelEnabled: true,
           bevelThickness: 1,
           bevelSize: 0.5,
@@ -66,51 +84,47 @@ const TagCloud = () => {
         });
 
         const textMaterial = new THREE.MeshStandardMaterial({
-          color: 0xffffff, // Ensure text color is white
-          emissive: 0xffffff, // Add emissive white light for better visibility
-          emissiveIntensity: 0.5, // Adjust the intensity of emissive light
-          metalness: 0.5,  // Add a slight metallic look
-          roughness: 0.3,  // Add slight roughness
+          color: 0xffffff,
+          emissive: 0xffffff,
+          emissiveIntensity: 0.5,
+          metalness: 0.5,
+          roughness: 0.3,
         });
-        
 
         const textMesh = new THREE.Mesh(textGeometry, textMaterial);
 
-        // Position the text
         textMesh.position.set(x, y, z);
 
         // Make the text face outwards
-        textMesh.lookAt(0, 0, 0); // Face towards the center first
-        textMesh.rotateY(Math.PI); // Rotate 180 degrees to face outward
+        textMesh.lookAt(0, 0, 0);
+        textMesh.rotateY(Math.PI);
 
         scene.add(textMesh);
       });
     });
 
-    // Mouse move event listener
     const onMouseMove = (event) => {
       const rect = mountRef.current.getBoundingClientRect();
-      const mouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1; // Normalize to [-1, 1]
-      const mouseY = -((event.clientY - rect.top) / rect.height) * 2 + 1; // Normalize to [-1, 1]
+      const mouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      const mouseY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
-      mousePosition.current = { x: mouseX, y: mouseY }; // Update mouse position
+      mousePosition.current = { x: mouseX, y: mouseY };
       isMouseOver.current = true;
     };
 
     const onMouseLeave = () => {
-      isMouseOver.current = false; // Stop rotation when the mouse leaves
+      isMouseOver.current = false;
     };
 
     mountRef.current.addEventListener('mousemove', onMouseMove);
     mountRef.current.addEventListener('mouseleave', onMouseLeave);
 
-    // Animation Loop
     const animate = () => {
       requestAnimationFrame(animate);
 
       if (isMouseOver.current) {
-        rotationState.current.x += mousePosition.current.y * 0.005; // Apply slight rotation based on mouse Y
-        rotationState.current.y += mousePosition.current.x * 0.005; // Apply slight rotation based on mouse X
+        rotationState.current.x += mousePosition.current.y * 0.01;
+        rotationState.current.y += mousePosition.current.x * 0.01;
       }
 
       scene.rotation.x = rotationState.current.x;
@@ -120,15 +134,20 @@ const TagCloud = () => {
     };
     animate();
 
-    // Cleanup
     return () => {
-      mountRef.current.removeEventListener('mousemove', onMouseMove);
-      mountRef.current.removeEventListener('mouseleave', onMouseLeave);
-      mountRef.current.removeChild(renderer.domElement);
+      if (mountRef.current) {
+        mountRef.current.removeEventListener('mousemove', onMouseMove);
+        mountRef.current.removeEventListener('mouseleave', onMouseLeave);
+        mountRef.current.removeChild(renderer.domElement);
+      }
     };
-  }, []);
+  }, [isMobile]);
 
-  return <div ref={mountRef} style={{ width: '100%', height: '500px' }} />;
+  if (isMobile) {
+    return null; // Do not render tag cloud on mobile
+  }
+
+  return <div ref={mountRef} style={{ width: '50%', height: '500px', alignItems: Center}} />;
 };
 
 export default TagCloud;

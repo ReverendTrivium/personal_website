@@ -4,6 +4,8 @@ import TagCloud from '../components/Tagcloud';
 
 
 const About = ({ sectionRefs }) => {
+  const isMobile = window.innerWidth <= 768;
+
   return (
     <div
       ref={(el) => (sectionRefs.current['About'] = el)}
@@ -11,7 +13,7 @@ const About = ({ sectionRefs }) => {
       className="about-container flex flex-row justify-between items-start px-4 py-4"
     >
       {/* About Text */}
-      <div className="about-text flex flex-col justify-center items-start text-gray-100 px-4">
+      <div className="about-text flex flex-col justify-center items-start text-gray-100">
         <h2 className="text-xl font-medium uppercase border-box">About</h2>
         <h3 className="text-base mt-4 text-start text-lightgray">
           I am a passionate software engineer specializing in crafting dynamic Java applications
@@ -31,7 +33,7 @@ const About = ({ sectionRefs }) => {
       </div>
 
       {/* TagCloud */}
-      <TagCloud />
+      {!isMobile && <TagCloud />} {/* Conditionally render TagCloud */}
     </div>
   );
 };

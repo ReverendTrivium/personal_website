@@ -16,29 +16,30 @@ main {
     height: 100%;
 }
 
-@media (min-width: 768px) {
-    main {
-        flex-direction: row;
-    }
-}
-
 .about-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: flex-start;
     color: white;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
 }
   
 .about-content {
     display: flex;
-    gap: 2rem;
+    gap: .5rem;
 }
   
 .about-text {
-    max-width: 50%;
+    width: 60%;
     font-size: 1rem;
     line-height: 1.6;
+    color: lightgray;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
 }
   
 .about-container {
@@ -50,7 +51,7 @@ main {
 }
   
 .tag-cloud {
-    width: 50%;
+    width: 40%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -88,4 +89,24 @@ main {
 .italic-script {
     font-style: italic;
     font-size: .75rem;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .about-text {
+      width: 100%; /* Expand the text to occupy most of the space */
+      text-align: center;
+    }
+  
+    .tag-cloud {
+      display: none; /* Hide the tag cloud */
+    }
 }

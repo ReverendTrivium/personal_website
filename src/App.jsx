@@ -8,7 +8,7 @@ import Experience from './pages/Experience';
 import Projects from './pages/Projects';
 import Radio from './components/Radio';
 import './styles/Meteors.scss';
-
+import Meteors from './components/Meteors';
 import React, { useState, useEffect, useRef } from 'react';
 
 const App = () => {
@@ -31,7 +31,6 @@ const App = () => {
     }
   }, []);
   
-
     // Handle scroll for header visibility
     useEffect(() => {
       const handleScroll = () => {
@@ -71,7 +70,7 @@ const App = () => {
       });
   
       return () => observer.disconnect();
-    }, []);
+    }, []); 
 
     return (
       <div className="w-full h-full">
@@ -81,25 +80,8 @@ const App = () => {
         
         {/* Background Layers */}
         <div className="star-background"></div>
-        {/* Meteor containers */}
-        <div className="meteor-container">
-          <div className="meteor-1"></div>
-          <div className="meteor-2"></div>
-          <div className="meteor-3"></div>
-          <div className="meteor-4"></div>
-          <div className="meteor-5"></div>
-          <div className="meteor-6"></div>
-          <div className="meteor-7"></div>
-          <div className="meteor-8"></div>
-          <div className="meteor-9"></div>
-          <div className="meteor-10"></div>
-          <div className="meteor-11"></div>
-          <div className="meteor-12"></div>
-          <div className="meteor-13"></div>
-          <div className="meteor-14"></div>
-          <div className="meteor-15"></div>
-        </div>
-  
+        <Meteors />
+
         {/* Main content container */}
         <div className="content">
           <div className="radio-container-wrapper">
