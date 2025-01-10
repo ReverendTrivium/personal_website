@@ -1,7 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/Meteors.scss';
 
 const Meteors = () => {
+  const numberOfMeteors = 15;
+
+  // Store meteor positions calculated only once
+  const [meteorPositions] = useState(() =>
+    Array.from({ length: numberOfMeteors }, () => ({
+      top: Math.random() * 250 + 50, // Random vertical position
+      left: Math.random() * 90 + 5, // Random horizontal position
+    }))
+  );
+
   useEffect(() => {
     const meteorContainer = document.querySelector('.meteor-container');
     if (!meteorContainer) {
@@ -9,44 +19,20 @@ const Meteors = () => {
       return;
     }
 
-    const numberOfMeteors = 15;
-
     // Create meteors dynamically
-    for (let i = 1; i <= numberOfMeteors; i++) {
+    meteorPositions.forEach((position, i) => {
       const meteor = document.createElement('div');
       meteor.className = `meteor meteor-${i}`;
+      meteor.style.top = `${position.top}px`;
+      meteor.style.left = `${position.left}vw`;
       meteorContainer.appendChild(meteor);
-    }
+    });
 
-    const updateMeteorPosition = () => {
-      const viewportTop = window.scrollY || document.documentElement.scrollTop;
-
-      for (let i = 1; i <= numberOfMeteors; i++) {
-        const meteor = document.querySelector(`.meteor-${i}`);
-        if (meteor) {
-          const randomVerticalOffset = Math.random() * 250 + 50;
-          const randomHorizontalOffset = Math.random() * 90 + 5;
-
-          meteor.style.top = `${viewportTop + randomVerticalOffset}px`;
-          meteor.style.left = `${randomHorizontalOffset}vw`;
-        }
-      }
-    };
-
-    // Initial position setup
-    updateMeteorPosition();
-
-    // Update dynamically
-    window.addEventListener('scroll', updateMeteorPosition);
-    window.addEventListener('resize', updateMeteorPosition);
-
-    // Cleanup
+    // Cleanup on component unmount
     return () => {
-      window.removeEventListener('scroll', updateMeteorPosition);
-      window.removeEventListener('resize', updateMeteorPosition);
       meteorContainer.innerHTML = '';
     };
-  }, []);
+  }, [meteorPositions]);
 
   return <div className="meteor-container"></div>;
 };

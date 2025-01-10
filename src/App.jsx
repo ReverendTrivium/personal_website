@@ -67,7 +67,7 @@ const App = () => {
         
         {/* Background Layers */}
         <StarBackground />
-        
+        <Meteors />
 
         {/* Main content container */}
         <div className="content">

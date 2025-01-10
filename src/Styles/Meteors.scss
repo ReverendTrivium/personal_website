@@ -1,5 +1,12 @@
 @import "./variables.scss";
 
+.meteor-container {
+  position: relative; // Ensures meteors are positioned relative to this container
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
 @for $i from 1 through $n {
   $v: random(90) + 9; // Random horizontal position
   $h: random(250) + 50; // Random vertical position
