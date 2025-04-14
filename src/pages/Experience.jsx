@@ -13,7 +13,7 @@ const Experience = React.forwardRef((props, ref) => (
             <h2 className="pb-4">
                 <Tooltip title="Company Link">
                     <Link
-                        href="https://discord.gg/fB2VQyjWP2"
+                        href="https://tomodachistreet.org"
                         target="_blank"
                         rel="noopener"
                         underline="none"
