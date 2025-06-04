@@ -11,6 +11,75 @@ const Projects =  ({ sectionRefs }) => {
     <div ref={(el) => (sectionRefs.current["Projects"] = el)} id="Projects" className="min-h-screen flex flex-col justify-center items-start text-gray-100 px-4 py-4">
       <h2 className="text-xl font-medium mt-2 uppercase border-box">Projects</h2>
       <div className="text-start my-4">
+        <p className="text-sm text-gray-400">2025</p>
+        <h2 className="pb-4">
+          <Tooltip title="Project Link">
+            <Link
+              href="https://github.com/Tomodachi-Street/Tomodachi-Street"
+              target="_blank"
+              rel="noopener"
+              underline="none"
+            >
+              <p className="text-gray-100">Tomodachi Street Website
+                <ShortcutIcon fontSize="small" sx={{
+                  color: 'white',
+                  '&:hover': { color: 'lightgray' }
+                }} />
+              </p>
+            </Link>
+          </Tooltip>
+        </h2>
+                <div className="text-start text-lightgray">
+          Designed and created a website for Tomodachi Street connected to the discord 
+          to showcase all future events, photos from past events, and showcase the community and staff.
+        </div>
+        <div className="mt-2 mb-2 flex flex-wrap">
+          <Bubble text="React" />
+          <Bubble text="HTML 5" />
+          <Bubble text="CSS" />
+          <Bubble text="JavaScript" />
+          <Bubble text="Tailwind CSS" />
+          <Bubble text="NPM" />
+          <Bubble text="Material UI" />
+          <Bubble text="Git" />
+        </div>
+
+        <h2 className="pb-4">
+          <Tooltip title="Project Link">
+            <Link
+              href="https://github.com/ReverendTrivium/Eya2.0"
+              target="_blank"
+              rel="noopener"
+              underline="none"
+            >
+              <p className="text-gray-100">Discord Bot (Eya 2.0)
+                <ShortcutIcon fontSize="small" sx={{
+                  color: 'white',
+                  '&:hover': { color: 'lightgray' }
+                }} />
+              </p>
+            </Link>
+          </Tooltip>
+        </h2>
+                <div className="text-start text-lightgray">
+          Hired to create and maintain a Discord bot for a community that 
+          allows for continous image fetching from Reddit. Along with a google search feature. 
+          Currently still being maintained and updated with new features.
+        </div>
+        <div className="mt-2 mb-2 flex flex-wrap">
+          <Bubble text="Java" />
+          <Bubble text="Java Discord API (JDA)" />
+          <Bubble text="Java Spring Framework" />
+          <Bubble text="MongoDB" />
+          <Bubble text="Reddit API" />
+          <Bubble text="Google Custom Search API" />
+          <Bubble text="ScheduledExecutorService" />
+          <Bubble text="Regular Expressions (REGEX)" />
+          <Bubble text="Dotenv" />
+          <Bubble text="Git" />
+        </div>
+
+        <br></br>
         <p className="text-sm text-gray-400">2024</p>
         <h2 className="pb-4">
           <Tooltip title="Project Link">
