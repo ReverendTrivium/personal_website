@@ -44,6 +44,7 @@ const Projects =  ({ sectionRefs }) => {
           <Bubble text="Git" />
         </div>
 
+        <br></br>
         <h2 className="pb-4">
           <Tooltip title="Project Link">
             <Link
