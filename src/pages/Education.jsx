@@ -46,6 +46,43 @@ const Education = ({ sectionRefs }) => {
                     </div>
                 </h2>
             </div>
+            <div className="text-start my-4">
+                <p className="text-sm text-gray-400">2025-2026</p>
+                <h2 className="">
+                    <Tooltip title="University Link">
+                        <Link
+                            href="https://www.odu.edu"
+                            target="_blank"
+                            rel="noopener"
+                            underline="none"
+                        >
+                            <p className="text-gray-100">Master of Science - Data Science and Analytics
+                                <ShortcutIcon fontSize="small" sx={{
+                                    color: 'white',
+                                    '&:hover': { color: 'lightgray' }
+                                }} />
+                            </p>
+                        </Link>
+                    </Tooltip>
+                    <div className="text-start text-lightgray">
+                        Old Dominion University
+                    </div>
+                    <div className="text-start text-lightgray italic-script">
+                        GPA 3.95
+                    </div>
+                    <div className="mt-2 mb-2 flex flex-wrap">
+                        <Bubble text="Machine Learning" />
+                        <Bubble text="Artifical Intelligence" />
+                        <Bubble text="Data Analytics" />
+                        <Bubble text="Data Science" />
+                        <Bubble text="Web Engineering" />
+                        <Bubble text="Databases" />
+                        <Bubble text="Natural Language Processing" />
+                        <Bubble text="Information Visualization" />
+                        <Bubble text="Cybersecurity" />
+                    </div>
+                </h2>
+            </div>
         </div>
     );
 };

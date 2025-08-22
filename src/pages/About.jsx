@@ -16,19 +16,24 @@ const About = ({ sectionRefs }) => {
       <div className="about-text">
         <h2 className="text-xl font-medium uppercase border-box">About</h2>
         <h3 className="text-base mt-4 text-start text-lightgray">
-          I am a passionate software engineer specializing in crafting dynamic Java applications
-          and engaging data visualizations. My expertise lies in developing fast, user-friendly
-          software solutions that prioritize exceptional user experiences. I thrive on bringing
-          innovation and precision to every project I take on.
+          I'm a Software Engineer and Team Lead with 8 years of experience building scalable, 
+          cloud-based, and community-driven applications. My work spans full-stack development 
+          with Java, JavaScript, React, and MongoDB, alongside integrations with APIs like Discord, 
+          Google Calendar, and Spotify. I've led cross-functional teams to deliver web and mobile 
+          apps on schedule, optimized databases for performance, and automated operations to 
+          streamline workflows. Beyond engineering, I founded and scaled Tomodachi Street, a 
+          DMV-based events group, where I developed custom tools, integrated open-source platforms, 
+          and created immersive AV experiences to drive community growth. My portfolio reflects a 
+          blend of technical depth, leadership, and creativity—building not just applications, but 
+          systems and communities that thrive.
           <br /><br />
-          With a strong background in Software Engineering, I've worked extensively with
-          technologies like Java, MySQL, C++, MongoDB, JavaScript, and HTML. Currently,
-          I'm expanding my skill set to include cloud technologies such as AWS and Microsoft
-          Azure. My experience includes building scalable web applications tailored to client needs,
-          as well as creating innovative projects for a community group I founded.
+          With a strong background in Software Engineering, I have extensive experience with technologies 
+          such as Java, MySQL, C++, MongoDB, JavaScript, and HTML. I am currently expanding my skill 
+          set to include cloud platforms like AWS and Microsoft Azure, as well as Machine Learning 
+          and Artificial Intelligence.
           <br /><br />
-          Outside of work, I enjoy cosplaying with friends, working on my car, skateboarding,
-          and pushing my limits at the gym.
+          Outside of work, I enjoy cosplaying with friends, working on my car, skateboarding, and 
+          challenging myself at the gym.
         </h3>
       </div>
 

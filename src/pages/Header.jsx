@@ -7,7 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import EmailIcon from '@mui/icons-material/Email';
 import Link from '@mui/material/Link';
-import Resume from '../assets/26014_Derrick_Eberlein.pdf';
+import Resume from '../assets/Derrick_Eberlein-SWE.pdf';
 import '../Styles/Header.css';
 
 const Header = () => {
