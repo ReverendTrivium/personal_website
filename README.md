@@ -40,7 +40,7 @@ Welcome to the repository for my personal website, hosted at [derrickeberlein.de
 ## Tech Stack
 
 - **Frontend**: [React](https://reactjs.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/), [styled-components](https://styled-components.com/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/), [styled-components](https://styled-components.com/), [TagCloud](https://www.npmjs.com/package/TagCloud)
 - **Icons**: [MaterialUI](https://mui.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
