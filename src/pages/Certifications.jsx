@@ -12,7 +12,7 @@ const Certifications =  ({ sectionRefs }) => {
     }, []);
 
     return (
-        <div ref={(el) => (sectionRefs.current["Certifications"] = el)} id="Certifications" className="flex flex-col items-start text-gray-100 px-4 py-4">
+        <div ref={(el) => (sectionRefs.current["Certifications"] = el)} id="Certifications" className="min-h-screen flex flex-col items-start text-gray-100 px-4 py-4">
             <h2 className="text-overlay text-xl font-medium uppercase border-box">Certifications</h2>
             <h3 className="text-overlay text-base mt-4 text-lightgray text-start">
                 <ul id="certs">
