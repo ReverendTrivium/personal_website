@@ -57,7 +57,7 @@ main {
 .tag-cloud {
   width: 100%;
   display: flex;
-  justify-content: center; /* center the canvas if desired */
+  justify-content: center;
   align-items: center;
 }
   
