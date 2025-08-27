@@ -51,7 +51,6 @@ html, body {
 .sections-container {
   flex-grow: 1;
   overflow: hidden; /* Allow sections to flow within the page */
-  padding-left: .5rem;
   scroll-behavior: smooth;
 }
 

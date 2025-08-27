@@ -36,7 +36,7 @@ main {
 }
   
 .about-text {
-    width: 70%;
+    width: 60%;
     font-size: 1rem;
     line-height: 1.6;
     color: lightgray;
@@ -55,9 +55,10 @@ main {
 
 /* TagCloud spans full width below */
 .tag-cloud {
-  width: 100%;
+  width: 40%;
   display: flex;
   justify-content: center;
+  margin-top: 6rem;
   align-items: center;
 }
   
@@ -112,23 +113,40 @@ main {
     .tag-cloud {
       display: none;
     }
+
+    .photo-img {
+      width: 50%;
+      height: 50%;
+      object-fit: cover;
+      border: 6px solid #e4e3e2;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+}
+
+/* Cancels the left padding applied by .sections-container just for this row */
+.about-hero {
+  /* if --sidebar-offset is 0, these resolve to 0 and do nothing */
+  margin-left: calc(-1 * var(--sidebar-offset, 0px));
+  width: calc(100% + var(--sidebar-offset, 0px));
+  display: flex;
+  justify-content: center;
 }
 
 /* Portfolio Photo */
 .photo-wrapper {
-  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .photo-img {
-  width: 100%;
-  height: 360px;
+  width: min(50vw, 520px);
+  height: auto;
   object-fit: cover;
-  border: 3px solid #e4e3e2;
-  border-radius: 50%;
-  margin-top: 6rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  border: 6px solid #e4e3e2;
+  display: block; /* centered by the flex parent */
 }
 
 .photo-card {

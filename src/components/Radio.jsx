@@ -1,89 +1,107 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useRef } from "react";
+import styled from "styled-components";
 
-const Radio = ({ nav }) => {
+const Radio = ({ nav, onWidthChange }) => {
+  const ref = useRef(null);
+
   useEffect(() => {
-    const radioButtons = document.querySelectorAll('.radio-container input');
+    const radioButtons = document.querySelectorAll(".radio-container input");
     radioButtons.forEach((radio) => {
-      if (radio.id === `radio-${nav.toLowerCase()}`) {
-        radio.checked = true;
-      }
+      if (radio.id === `radio-${nav.toLowerCase()}`) radio.checked = true;
     });
   }, [nav]);
 
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const report = () => onWidthChange?.(ref.current?.offsetWidth || 0);
+    report(); // initial
+
+    const ro = new ResizeObserver(() => report());
+    ro.observe(ref.current);
+
+    // also handle window resize (some browsers/containers can be finicky)
+    window.addEventListener('resize', report);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', report);
+    };
+  }, [onWidthChange]);
+
   return (
     <StyledWrapper nav={nav}>
-      <div className="radio-container">
+      <div ref={ref} className="radio-container">
         <input
-          onClick={() => {
-            document.getElementById('About')?.scrollIntoView({ behavior: 'smooth' });
-          }}
+          onClick={() =>
+            document.getElementById("About")?.scrollIntoView({ behavior: "smooth" })
+          }
           defaultChecked
           id="radio-about"
           name="radio"
           type="radio"
         />
-        <label htmlFor="radio-about" className={nav === 'About' ? 'active' : ''}>
+        <label htmlFor="radio-about" className={nav === "About" ? "active" : ""}>
           ABOUT
         </label>
 
         <input
-          onClick={() => {
-            document.getElementById('Experience')?.scrollIntoView({ behavior: 'smooth' });
-          }}
+          onClick={() =>
+            document.getElementById("Experience")?.scrollIntoView({ behavior: "smooth" })
+          }
           id="radio-experience"
           name="radio"
           type="radio"
         />
-        <label htmlFor="radio-experience" className={nav === 'Experience' ? 'active' : ''}>
+        <label htmlFor="radio-experience" className={nav === "Experience" ? "active" : ""}>
           EXPERIENCE
         </label>
 
         <input
-          onClick={() => {
-            document.getElementById('Education')?.scrollIntoView({ behavior: 'smooth' });
-          }}
+          onClick={() =>
+            document.getElementById("Education")?.scrollIntoView({ behavior: "smooth" })
+          }
           id="radio-education"
           name="radio"
           type="radio"
         />
-        <label htmlFor="radio-education" className={nav === 'Education' ? 'active' : ''}>
+        <label htmlFor="radio-education" className={nav === "Education" ? "active" : ""}>
           EDUCATION
         </label>
 
         <input
-          onClick={() => {
-            document.getElementById('Projects')?.scrollIntoView({ behavior: 'smooth' });
-          }}
+          onClick={() =>
+            document.getElementById("Projects")?.scrollIntoView({ behavior: "smooth" })
+          }
           id="radio-projects"
           name="radio"
           type="radio"
         />
-        <label htmlFor="radio-projects" className={nav === 'Projects' ? 'active' : ''}>
+        <label htmlFor="radio-projects" className={nav === "Projects" ? "active" : ""}>
           PROJECTS
         </label>
 
         <input
-          onClick={() => {
-            document.getElementById('Certifications')?.scrollIntoView({ behavior: 'smooth' });
-          }}
+          onClick={() =>
+            document.getElementById("Certifications")?.scrollIntoView({ behavior: "smooth" })
+          }
           id="radio-certifications"
           name="radio"
           type="radio"
         />
-        <label htmlFor="radio-certifications" className={nav === 'Certifications' ? 'active' : ''}>
+        <label htmlFor="radio-certifications" className={nav === "Certifications" ? "active" : ""}>
           CERTIFICATIONS
         </label>
 
         <input
-          onClick={() => {
-            document.getElementById('Achievements')?.scrollIntoView({ behavior: 'smooth' });
-          }}
+          onClick={() =>
+            document.getElementById("Achievements")?.scrollIntoView({ behavior: "smooth" })
+          }
           id="radio-achievements"
           name="radio"
           type="radio"
         />
-        <label htmlFor="radio-achievements" className={nav === 'Achievements' ? 'active' : ''}>
+        <label htmlFor="radio-achievements" className={nav === "Achievements" ? "active" : ""}>
           ACHIEVEMENTS
         </label>
 
@@ -163,46 +181,45 @@ const StyledWrapper = styled.div`
   .radio-container label:not(.active) + label:hover {
     color: grey;
   }
-
-  .radio-container input:nth-of-type(1):checked ~ .glider-container .glider {
-    transform: translateY(0);
-  }
+  
+  .radio-container input:nth-of-type(1):checked ~ .glider-container .glider { 
+    transform: translateY(0); 
+  } 
 
   .radio-container input:nth-of-type(2):checked ~ .glider-container .glider {
-    transform: translateY(100%);
-  }
+    transform: translateY(100%); 
+  } 
 
   .radio-container input:nth-of-type(3):checked ~ .glider-container .glider {
-    transform: translateY(200%);
-  }
+    transform: translateY(200%); 
+  } 
 
-  .radio-container input:nth-of-type(4):checked ~ .glider-container .glider {
-    transform: translateY(300%);
-  }
+  .radio-container input:nth-of-type(4):checked ~ .glider-container .glider { 
+    transform: translateY(300%); 
+  } 
+  .radio-container input:nth-of-type(5):checked ~ .glider-container .glider { 
+    transform: translateY(400%); 
+  } 
 
-  .radio-container input:nth-of-type(5):checked ~ .glider-container .glider {
-    transform: translateY(400%);
-  }
-
-  .radio-container input:nth-of-type(6):checked ~ .glider-container .glider {
-    transform: translateY(500%);
-  }
+  .radio-container input:nth-of-type(6):checked ~ .glider-container .glider { 
+    transform: translateY(500%); 
+  } 
 
   .radio-container input:nth-of-type(7):checked ~ .glider-container .glider {
-    transform: translateY(600%);
+    transform: translateY(600%); 
   }
 
-  .radio-container input:nth-of-type(8):checked ~ .glider-container .glider {
-    transform: translateY(700%);
-  }
+  .radio-container input:nth-of-type(8):checked ~ .glider-container .glider { 
+    transform: translateY(700%); 
+  } 
 
-  .radio-container input:nth-of-type(9):checked ~ .glider-container .glider {
-    transform: translateY(800%);
+  .radio-container input:nth-of-type(9):checked ~ .glider-container .glider { 
+    transform: translateY(800%); 
   }
-
-  .radio-container input:nth-of-type(10):checked ~ .glider-container .glider {
-    transform: translateY(900%);
-  }
-`;
-
+   
+  .radio-container input:nth-of-type(10):checked ~ .glider-container .glider { 
+     transform: translateY(900%); 
+  } 
+`; 
+  
 export default Radio;
