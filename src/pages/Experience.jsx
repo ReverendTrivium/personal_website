@@ -6,7 +6,7 @@ import Bubble from '../components/Bubble';
 import '../Styles/Experience.css';
 
 const Experience = React.forwardRef((props, ref) => (
-    <div ref={ref} id="Experience" className="min-h-screen flex flex-col items-start text-gray-100 px-4 py-4">
+    <div ref={ref} id="Experience" className="flex flex-col items-start text-gray-100 px-4 py-4">
         <h2 className="text-xl font-medium mt-2 uppercase py-4 border-box">Experience</h2>
         <div className="text-start my-4">
             <p className="text-sm text-gray-400">Feburary 2024 - Present</p>

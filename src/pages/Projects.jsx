@@ -8,7 +8,7 @@ import '../Styles/Projects.css';
 
 const Projects =  ({ sectionRefs }) => {
   return (
-    <div ref={(el) => (sectionRefs.current["Projects"] = el)} id="Projects" className="min-h-screen flex flex-col justify-center items-start text-gray-100 px-4 py-4">
+    <div ref={(el) => (sectionRefs.current["Projects"] = el)} id="Projects" className="flex flex-col justify-center items-start text-gray-100 px-4 py-4">
       <h2 className="text-xl font-medium mt-2 uppercase border-box">Projects</h2>
       <div className="text-start my-4">
         <p className="text-sm text-gray-400">2025</p>

@@ -61,7 +61,7 @@ const TagCloud = () => {
     ];
 
     // Create Sphere and Add Text Tags
-    const radius = 100;
+    const radius = 200;
 
     const fontLoader = new FontLoader();
     fontLoader.load('/helvetiker_regular.typeface.json', (font) => {
@@ -147,7 +147,7 @@ const TagCloud = () => {
     return null; // Do not render tag cloud on mobile
   }
 
-  return <div ref={mountRef} style={{ width: '30%', height: '500px', alignItems: Center}} />;
+  return <div ref={mountRef} style={{ width: '100%', height: '360px'}} />;
 };
 
 export default TagCloud;
