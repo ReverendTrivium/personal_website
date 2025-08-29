@@ -46,7 +46,7 @@ const Header = () => {
                     </Tooltip>
                     <Tooltip title="Instagram">
                         <Link
-                            href="https://www.instagram.com/mx.cyberagent/"
+                            href="https://www.instagram.com/derrickeberlein"
                             rel="noopener"
                             target="_blank"
                             underline="none"
