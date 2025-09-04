@@ -142,7 +142,7 @@ main {
 }
 
 .photo-img {
-  width: min(50vw, 520px);
+  width: min(50vw, 277px);
   height: auto;
   object-fit: cover;
   border: 6px solid #e4e3e2;
