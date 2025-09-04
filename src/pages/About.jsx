@@ -19,7 +19,7 @@ const About = ({ sectionRefs }) => {
           rel="noopener noreferrer"
           className="photo-card text-decoration-none"
         >
-          <img src="/Photo/Profile_Photo2.jpg" alt="Portrait" className="photo-img" />
+          <img src="/Photo/Profile_Photo3.jpg" alt="Portrait" className="photo-img" />
         </a>
       </div>
 
