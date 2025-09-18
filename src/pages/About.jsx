@@ -14,7 +14,7 @@ const About = ({ sectionRefs }) => {
       {/* HERO: Cancels sidebar padding and centers the profile photo */}
       <div className="about-hero">
         <a
-          href="https://instagram.com/mx.cyberagent"
+          href="https://www.instagram.com/derrickeberlein/"
           target="_blank"
           rel="noopener noreferrer"
           className="photo-card text-decoration-none"
