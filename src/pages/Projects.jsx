@@ -64,7 +64,7 @@ const Projects =  ({ sectionRefs }) => {
         </h2>
                 <div className="text-start text-lightgray">
           Hired to create and maintain a Discord bot for a community that 
-          allows for continous image fetching from Reddit. Along with a google search feature. 
+          allows for continuous image fetching from Reddit. Along with a google search feature. 
           Currently still being maintained and updated with new features.
         </div>
         <div className="mt-2 mb-2 flex flex-wrap">
