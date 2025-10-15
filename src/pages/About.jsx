@@ -12,16 +12,6 @@ const About = ({ sectionRefs }) => {
       className="about-section px-4 py-4"
     >
       {/* HERO: Cancels sidebar padding and centers the profile photo */}
-      <div className="about-hero">
-        <a
-          href="https://www.instagram.com/derrickeberlein/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="photo-card text-decoration-none"
-        >
-          <img src="/Photo/Profile_Photo3.jpg" alt="Portrait" className="photo-img" />
-        </a>
-      </div>
 
       {/* BODY: text (and tag cloud) keeps the sidebar offset */}
       <div className="about-row">
