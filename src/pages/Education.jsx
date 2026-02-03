@@ -68,7 +68,7 @@ const Education = ({ sectionRefs }) => {
                         Old Dominion University
                     </div>
                     <div className="text-start text-lightgray italic-script">
-                        GPA 3.95
+                        GPA 4.0
                     </div>
                     <div className="mt-2 mb-2 flex flex-wrap">
                         <Bubble text="Machine Learning" />
@@ -77,9 +77,7 @@ const Education = ({ sectionRefs }) => {
                         <Bubble text="Data Science" />
                         <Bubble text="Web Engineering" />
                         <Bubble text="Databases" />
-                        <Bubble text="Natural Language Processing" />
                         <Bubble text="Information Visualization" />
-                        <Bubble text="Cybersecurity" />
                     </div>
                 </h2>
             </div>
